@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\BelongingController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,4 +44,9 @@ Route::group(['prefix' => '/group'], function () {
     Route::post('store', [GroupController::class, 'store'])->name('group.store');
     // Route::post('update/{id}', [GroupController::class, 'update'])->name('group.update');
     // Route::post('delete/{id}', [GroupController::class, 'delete'])->name('group.delete');
+});
+
+Route::group(['prefix' => '/belonging'], function () {
+    Route::post('/attach/{user_id}/{group_id}', [BelongingController::class, 'attach'])->name('belonging.attach');
+    Route::get('/detach', [BelongingController::class, 'detach'])->name('belonging.detach');
 });

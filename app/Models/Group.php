@@ -26,4 +26,8 @@ class Group extends Model
         'name',
         'image'
     ];
+    public function users()
+    {
+        return $this->belongsToMany(Group::class, 'belonging');
+    }
 }
