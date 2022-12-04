@@ -45,14 +45,17 @@ class RegisteredUserController extends Controller
             'image' => ['nullable']
         ]);
 
-        // $user = User::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        //     'height' => $request->height,
-        // ]);
+        // $画像選択は何も選択していない場合NULLになる。
+        // プロパティから削除することで、MySQL側で設定したデフォルト値を設定できるようにする。
+        $register_request
+            = $request->all();
+
+        if (is_null($register_request['image'])) {
+            unset($register_request['image']);
+        }
+
         $user->fill(array_merge(
-            $request->all(),
+            $register_request,
             ['password' => Hash::make($request->password)]
         ))->save();
 
