@@ -45,6 +45,72 @@
                                 name="password_confirmation" required />
             </div>
 
+            <!-- Height -->
+            <div class="mt-4">
+                <x-label for="height" :value="__('Height')" />
+
+                <x-input id="height" class="block mt-1 w-full"
+                                type="text"
+                                name="height"
+                                :value="old('height')"
+                                required
+                                />
+            </div>
+
+            <!-- Store Height -->
+            <div class="mt-4">
+                <x-checkbox id="store_height" class="mt-1"
+                                name="store_height"
+                                message="Store Height"
+                                />
+            </div>
+
+            <!-- Store Weight -->
+            <div class="mt-4">
+                <x-checkbox id="store_weight" class="mt-1"
+                                name="store_weight"
+                                message="Store Weight"
+                                />
+            </div>
+
+            <!-- Sex -->
+            @php
+              $lists = [['id'=> 0, 'name' => "Unkown"],
+                        ['id'=> 1, 'name' => "Man"],
+                        ['id'=> 2, 'name' => "Woman"],
+                        ['id'=> 9, 'name' => "Other"],
+                       ]
+            @endphp
+            <div class="mt-4">
+                <x-label for="sex" :value="__('Sex')" />
+                <x-dropdown-list id="sex"
+                                 name="sex"
+                                 :value="old('sex')"
+                                 required
+                                 :lists="$lists">
+                </x-dropdown-list>
+            </div>
+
+            <!-- Birthday -->
+            <div class="mt-4">
+                <x-label for="birthday" :value="__('Birthday')" />
+                   <x-input id="birthday" class="block mt-1 w-full"
+                                type="date"
+                                name="birthday"
+                                :value="old('birthday')"
+                                required />
+            </div>
+
+            <!-- Image -->
+            <div class="mt-4">
+                <x-label for="image" :value="__('Image')" />
+                   <x-input id="image" class="block mt-1 w-full"
+                                type="file"
+                                name="image"
+                                :value="old('image')"
+                                />
+            </div>
+
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
