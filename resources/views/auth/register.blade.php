@@ -60,10 +60,7 @@
             <!-- Store Height -->
             <div class="mt-4">
                 <x-checkbox id="store_height" class="mt-1"
-                                type="checkbox"
                                 name="store_height"
-                                :value="old('store_height')"
-                                required
                                 message="Store Height"
                                 />
             </div>
@@ -71,9 +68,7 @@
             <!-- Store Weight -->
             <div class="mt-4">
                 <x-checkbox id="store_weight" class="mt-1"
-                                type="checkbox"
                                 name="store_weight"
-                                :value="old('store_weight')"
                                 message="Store Weight"
                                 />
             </div>
@@ -99,9 +94,9 @@
             <!-- Birthday -->
             <div class="mt-4">
                 <x-label for="birthday" :value="__('Birthday')" />
-                   <x-input id="date" class="block mt-1 w-full"
+                   <x-input id="birthday" class="block mt-1 w-full"
                                 type="date"
-                                name="date"
+                                name="birthday"
                                 :value="old('birthday')"
                                 required />
             </div>
