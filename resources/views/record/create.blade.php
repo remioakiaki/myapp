@@ -20,12 +20,13 @@
             </div>
 
             <!-- Height -->
+            @if(auth()->user()->not_store_height)
             <div>
                 <x-label for="height" :value="__('Height')" />
 
                 <x-input id="height" class="block mt-1 w-full" type="text" name="height" :value="old('height')" required autofocus />
             </div>
-
+            @endif
             <!-- Comment -->
             <div>
                 <x-label for="comment" :value="__('Comment')" />
