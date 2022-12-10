@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\BelongingController;
+use App\Http\Controllers\RecordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,4 +50,15 @@ Route::group(['prefix' => '/group'], function () {
 Route::group(['prefix' => '/belonging'], function () {
     Route::post('/attach/{user_id}/{group_id}', [BelongingController::class, 'attach'])->name('belonging.attach');
     Route::get('/detach', [BelongingController::class, 'detach'])->name('belonging.detach');
+});
+
+Route::group(['prefix' => '/record'], function () {
+    Route::get('/', [RecordController::class, 'index'])->name('record.index');
+    Route::get('/welcome', [RecordController::class, 'welcome'])->name('record.welcome');
+    // Route::get('show/{id}', [RecordController::class, 'show'])->name('record.show');
+    // Route::get('edit/{id}', [RecordController::class, 'edit'])->name('record.edit');
+    Route::get('create', [RecordController::class, 'create'])->name('record.create');
+    Route::post('store', [RecordController::class, 'store'])->name('record.store');
+    // Route::post('update/{id}', [RecordController::class, 'update'])->name('record.update');
+    // Route::post('delete/{id}', [RecordController::class, 'delete'])->name('record.delete');
 });
