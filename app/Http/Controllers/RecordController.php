@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class RecordController extends Controller
 {
+    public function index($user_id)
+    {
+        $records = Record::where('user_id', $user_id)->get();
+        return view('record.index', compact('records'));
+    }
     public function create()
     {
         return view('record.create');
@@ -27,6 +32,6 @@ class RecordController extends Controller
             unset($record_request['weight']);
         }
         $record->fill($record_request)->save();
-        return view('record.create');
+        return redirect()->route('record.index', ['user_id' => \Auth::id()]);
     }
 }
