@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Record;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -32,7 +33,14 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $auth_user_today_record_count = Record::whereDate('created_at', date("Y-m-d"))
+            ->where('user_id', \Auth::id())
+            ->count();
+        if ($auth_user_today_record_count == 0) {
+            return redirect()->intended(RouteServiceProvider::HOME);
+        } else {
+            return redirect()->route('user.show', \Auth::id());
+        }
     }
 
     /**
