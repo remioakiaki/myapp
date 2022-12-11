@@ -34,6 +34,9 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link :href="route('user.show',['id'=> Auth::id()])">My Page</x-dropdown-link>
+                        <x-dropdown-link :href="route('group.index')">Join Group</x-dropdown-link>
+                        <x-dropdown-link :href="route('group.create')">Create Group</x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
