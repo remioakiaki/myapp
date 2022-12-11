@@ -22,8 +22,8 @@ class User extends Authenticatable
         'email',
         'password',
         'height',
-        'store_height',
-        'store_weight',
+        'not_store_height',
+        'not_store_weight',
         'sex',
         'birthday',
         'image'
