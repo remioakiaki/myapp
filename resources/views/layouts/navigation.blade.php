@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -34,6 +37,10 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link :href="route('user.show',['id'=> Auth::id()])">My Page</x-dropdown-link>
+                        <x-dropdown-link :href="route('record.index',['user_id'=> Auth::id()])">My Record</x-dropdown-link>
+                        <x-dropdown-link :href="route('group.index')">Join Group</x-dropdown-link>
+                        <x-dropdown-link :href="route('group.create')">Create Group</x-dropdown-link>
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -76,6 +83,10 @@
             </div>
 
             <div class="mt-3 space-y-1">
+                <x-responsive-nav-link :href="route('user.show',['id'=> Auth::id()])">My Page</x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('record.index',['user_id'=> Auth::id()])">My Record</x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('group.index')">Join Group</x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('group.create')">Create Group</x-responsive-nav-link>
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

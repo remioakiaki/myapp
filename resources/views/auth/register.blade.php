@@ -53,23 +53,22 @@
                                 type="text"
                                 name="height"
                                 :value="old('height')"
-                                required
                                 />
             </div>
 
-            <!-- Store Height -->
+            <!-- Not Store Height -->
             <div class="mt-4">
-                <x-checkbox id="store_height" class="mt-1"
-                                name="store_height"
-                                message="Store Height"
+                <x-checkbox id="not_store_height" class="mt-1"
+                                name="not_store_height"
+                                message="Not Store Height"
                                 />
             </div>
 
-            <!-- Store Weight -->
+            <!-- Not Store Weight -->
             <div class="mt-4">
-                <x-checkbox id="store_weight" class="mt-1"
+                <x-checkbox id="not_store_weight" class="mt-1"
                                 name="store_weight"
-                                message="Store Weight"
+                                message="Not Store Weight"
                                 />
             </div>
 
@@ -112,10 +111,6 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
                 <x-button class="ml-4">
                     {{ __('Register') }}
                 </x-button>

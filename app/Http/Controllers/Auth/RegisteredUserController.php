@@ -37,9 +37,8 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'height' => ['required'],
-            'store_height' => ['nullable'],
-            'store_weight' => ['nullable'],
+            'not_store_height' => ['nullable'],
+            'not_store_weight' => ['nullable'],
             'sex' => ['required'],
             'birthday' => ['required'],
             'image' => ['nullable']

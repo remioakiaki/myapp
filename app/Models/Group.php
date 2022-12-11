@@ -28,6 +28,6 @@ class Group extends Model
     ];
     public function users()
     {
-        return $this->belongsToMany(Group::class, 'belonging');
+        return $this->belongsToMany(User::class, 'belonging');
     }
 }
