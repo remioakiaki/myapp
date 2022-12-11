@@ -18,6 +18,7 @@ class AlterUsersTable extends Migration
             $table->boolean('store_weight')->change();
             $table->renameColumn('store_height', 'not_store_height');
             $table->renameColumn('store_weight', 'not_store_weight');
+            $table->decimal('height', $total = 4, $place = 1)->nullable()->change();
         });
     }
 
@@ -29,12 +30,12 @@ class AlterUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->renameColumn('not_store_height', 'store_height');
-            $table->renameColumn('not_store_weight', 'store_weight');
             DB::statement('ALTER TABLE `users`
-            CHANGE COLUMN `store_weight` `store_weight` TINYINT');
+            CHANGE COLUMN `not_store_weight` `store_weight` TINYINT');
             DB::statement('ALTER TABLE `users`
-            CHANGE COLUMN `store_height` `store_height` TINYINT');
+            CHANGE COLUMN `not_store_height` `store_height` TINYINT');
+            //$table->renameColumn('not_store_height', 'store_height');
+            //$table->renameColumn('not_store_weight', 'store_weight');
         });
     }
 }
